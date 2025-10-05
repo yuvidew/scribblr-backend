@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 const {connectDB} = require("./db/connectDB.js");
-// const router = require("./router/route")
+const router = require("./router/route")
 
 const app = express();
 const port = 2000 || process.env.PORT;
@@ -16,6 +16,8 @@ app.use(cors());
 app.get("/" , (req , res) => res.status(200).json({
     message : "Hello From scibblr server"
 }));
+
+app.use("/v1" , router)
 
 const start = async () => {
     try {
